@@ -1,9 +1,10 @@
 from rest_framework import serializers
 
-from women.models import Women
 
-
-class WomenSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Women
-        fields = ('title', 'cat_id')
+class WomenSerializers(serializers.Serializer):
+    title = serializers.CharField(max_length=255)
+    content = serializers.CharField()
+    time_create = serializers.DateTimeField()
+    time_update = serializers.DateTimeField()
+    is_published = serializers.BooleanField(default=True)
+    cat_id = serializers.IntegerField()
